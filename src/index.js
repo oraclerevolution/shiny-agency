@@ -7,15 +7,19 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Survey from './pages/Survey';
 import reportWebVitals from "./reportWebVitals"
 import Header from "./components/Header"
-import ClientForm from "./components/ClientForm"
 import FreelanceForm from "./components/FreelanceForm"
 import Error from "./components/Error"
 import Freelances from './components/FreelanceForm/Freelances';
+import Results from './pages/Results';
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
-  div{
+  *{
     font-family: 'Trebuchet MS', Helvetica, sans-serif;
+  }
+
+  body{
+    margin: 0;
   }
 `;
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -26,12 +30,10 @@ root.render(
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/survey/:questionNumber" element={<Survey />}>
-          <Route path="client" element={<ClientForm />} />
-          <Route path="freelance" element={<FreelanceForm />} />
-        </Route>
+        <Route path="/survey/:questionNumber" element={<Survey />} />
         <Route path="*" element={<Error />} />
-        <Route path="freelances" element={<Freelances />} />
+        <Route path="/freelances" element={<Freelances />} />
+        <Route path="/results" element={<Results />} />
       </Routes>
     </Router>
   </React.StrictMode>

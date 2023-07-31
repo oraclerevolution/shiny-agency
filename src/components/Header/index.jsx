@@ -1,20 +1,41 @@
 import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 import colors from "../../utils/style/colors";
+import DarkLogo from '../../assets/dark-logo.png'
+import {StyledLink} from "../../utils/style/Atoms";
 
-const StyledLink = styled(Link)`
-    padding: 15px;
-    color: ${colors.secondary};
-    text-decoration: none;
-    font-size: 18px;
+const HomeLogo = styled.img`
+  height: 70px;
 `
+
+const NavContainer = styled.nav`
+  padding: 30px;
+  display: flex;
+  align-items: center;
+`
+const LeftSide = styled.div``;
+
+const RightLink = styled(StyledLink)`
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  position: absolute;
+  right: 0;
+`;
 function Header(){
     return(
-        <nav>
-            <StyledLink to="/">Home</StyledLink>
-            <StyledLink to="/survey/42">Survey</StyledLink>
-            <StyledLink to="/freelances">Freelances</StyledLink>
-        </nav>
+        <NavContainer>
+          <LeftSide>
+            <Link to="/">
+                <HomeLogo src={DarkLogo} alt="logo" />
+            </Link>
+          </LeftSide>
+          <RightLink>
+              <StyledLink to="/">Accueil</StyledLink>
+              <StyledLink to="/freelances">Profils</StyledLink>
+              <StyledLink to="/survey/1">Faire le test</StyledLink>
+          </RightLink>
+        </NavContainer>
     )
 }
 
